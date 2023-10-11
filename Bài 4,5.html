@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let stores = [{ id: 1, name: "milk", count: 100 },
+        { id: 2, name: "yakult", count: 100 },
+        { id: 3, name: "butter", count: 100, }];
+        let carts = []
+        let a = 0
+        while (a < 1) {
+            let option = prompt("Nhập C R U D E để lựa chọn hàng hóa")
+            switch (option) {
+                case "C":
+
+                    let product = prompt("nhập sản phẩm muốn mua")
+                    // console.log(product);
+                    let checkItem = stores.find((item) => {
+                        return item.name == product;
+                    })
+                    // console.log(checkItem);
+                    if (checkItem) {
+                        let checkCarts = carts.filter((item) => {
+                            return item.name == product;
+                        })
+                        // console.log(checkCarts);C
+                        for (let i = 0; i < stores.length; i++) {
+                            if (stores[i].name == product) {
+                                stores[i].count = --stores[i].count;
+                            }
+                        }
+                        if (checkCarts.length == 0) {
+                            carts.push({ ...checkItem, count: 1 })
+
+                        } else {
+                            for (let i = 0; i < carts.length; i++) {
+                                if (carts[i].name == product) {
+                                    carts[i].count = ++carts[i].count;
+                                }
+                            }
+                        }
+                        console.log("carts", carts);
+                        console.log("stores", stores);
+                    } else {
+                        alert("sản phẩm không có trong giỏ hàng")
+                    }
+                    // console.log(carts);
+                    break;
+                case "R":
+                    for (let i = 0; i < stores.length; i++) {
+                        console.log(stores[i]);
+                    }
+                    for (let j = 0; j < carts.length; j++) {
+                        console.log(carts[j]);
+                    }
+                    break;
+                case "U":
+                    let update = prompt("Nhập sản phẩm muốn thay đổi sổ lượng")
+                    let updateCount = +prompt("Nhập số lượng")
+                    let checkUpdate = carts.filter((item) => {
+                        return item.name == update;
+                    })
+                    if (checkUpdate.length != 0) {
+                        for (let i = 0; i < carts.length; i++) {
+                            if (carts[i].name == update) {
+                                carts[i].count = updateCount;
+                            }
+                            for (let j = 0; j < stores.length; j++) {
+                                if (stores[i].name == update) {
+                                    stores[i].count = 100 - updateCount;
+                                }
+                            }
+                        }
+                    } else {
+                        alert("Sản Phẩm chưa có trong giỏ hàng");
+                    }
+                    console.log("carts", carts);
+                    console.log("stores", stores);
+                    break;
+                case "D":
+                    let deleteItem = prompt("Nhập tên sản phẩm muốn xóa")
+                    let checkDelet = carts.filter((item) => {
+                        return item.name == deleteItem;
+                    })
+                    if (checkDelet.length != 0) {
+                        for (let i = 0; i < carts.length; i++) {
+                            if (carts[i].name == deleteItem) {
+                                carts.splice(i, 1);
+                            }
+                        }
+                        for (let j = 0; j < stores.length; j++) {
+                            if (stores[j].name == deleteItem) {
+                                stores[j].count = 100;
+                            }
+                        }
+                    } else {
+                        alert("Sản Phẩm không có trong giỏ hàng")
+                    }
+                    console.log("carts", carts);
+                    console.log("stores", stores);
+                    break;
+                case "E":
+                    alert("Tạm Biệt")
+                    a = 2;
+                    break;
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
