@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        class Student {
+            constructor(id, name, gender, age, mark) {
+                this.id = id,
+                    this.name = name,
+                    this.gender = gender,
+                    this.age = age,
+                    this.mark = mark
+            }
+        }
+        let student1 = new Student(1, "Nguyen Van A", "nam", 20, 9);
+        let student2 = new Student(1, "Nguyen Van B", "nam", 20, 9);
+        let student3 = new Student(1, "Nguyen Van C", "nam", 20, 4);
+        let student4 = new Student(1, "Nguyen Van D", "nam", 20, 7);
+        let student5 = new Student(1, "Nguyen Van E", "nam", 20, 5);
+        let students = [];
+        students.push(student1, student2, student3, student4, student5);
+        let arrMark = []
+        let max = 0
+        for (let i = 0; i < students.length; i++) {
+            arrMark[i] = students[i].mark
+        }
+       
+        let sum=0
+        for (let j = 0; j < arrMark.length; j++) {
+            if (arrMark[j] > max) {
+                max = arrMark[j]
+            }
+            sum += arrMark[j]
+        }
+        let tB=sum/arrMark.length;
+        console.log(max);
+        for (let i = 0; i < students.length; i++) {
+            if (students[i].mark == max) {
+                console.log(` Học sinh có điểm cao nhất ${students[i].name}`);
+                console.log(students[i]);
+            }
+            if (students[i].mark >= 7.5) {
+                console.log(` Học sinh có học lực khá ${students[i].name}`);
+                console.log(students[i]);
+            } else if (students[i].mark < 7.5 && students[i].mark >= 5){
+                console.log(` Học sinh có học lực Trung Bình ${students[i].name}`)
+                console.log(students[i]);
+            } else if (students[i].mark < 5) {
+                console.log(` Học sinh có học lực Yếu ${students[i].name}`)
+                console.log(students[i]);
+            }
+        }
+        if (tB >= 7.5) {
+                console.log( "lớp khá ");
+                
+            } else if (tB < 7.5 && tB >= 5){
+                console.log("Lớp Trung Bình");
+                
+            } else if (tB < 5) {
+                console.log('Lớp yếu')
+            }
+
+        
+        
+    </script>
+
+</body>
+
+</html>

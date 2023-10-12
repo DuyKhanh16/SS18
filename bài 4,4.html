@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <script>
+     
+            
+      
+        class Learn {
+            constructor(id, name, completed) {
+                this.id = id;
+                this.name = name;
+                this.completed = completed
+            }
+        }
+        let hTML = new Learn(1, "HTML", "false");
+        let cSS = new Learn(2, "CSS", "false");
+        let basic = new Learn(3, "Basic of javascript", "false");
+        let node = new Learn(4, "Node parkage Manager", "false");
+        let git = new Learn(5, "Git", "false");
+        let arr = [hTML, cSS, basic, node, git]
+       let turn=0
+       
+        // for (let i = 0; i < arr.length; i++) {
+        //         for (const key in arr[i]) {
+        //           console.log(arr[i][key]);
+                 
+        //         }
+        //     }
+        
+           
+       
+            let option = prompt("Nhập C-R-U-D-E");
+        
+        if (option == "C") {
+            let newLean = new Learn(+prompt("Nhập id"),
+                prompt("Nhập tên môn học"),
+                prompt("nhập completed"));
+            arr.push(newLean);
+            console.log(arr);
+            for (let i = 0; i < arr.length; i++) {
+                for (const key in arr[i]) {
+                    document.write(arr[i][key]);
+                    document.write("<br><br>")
+                }
+            }
+        } else if (option == "R") {
+            for (let i = 0; i < arr.length; i++) {
+                for (const key in arr[i]) {
+                    document.write(arr[i][key]);
+                    document.write("<br><br>")
+                }
+            }
+        } else if (option == "U") {
+            let a = +prompt("Nhập ID muốn update (1 2 3 4 5)")
+            for (let j = 0; j < arr.length; j++) {
+                if (arr[j].id == a) {
+                    arr[j].name = prompt("Nhập tên môn học mới");
+                    arr[j].completed = prompt("Nhập completed");
+                }
+            }
+            for (let i = 0; i < arr.length; i++) {
+                for (const key in arr[i]) {
+                    document.write(arr[i][key]);
+                    document.write("<br><br>");
+                }
+            }
+        } else if (option == "D") {
+            let xoa = +prompt("nhập vị trí muốn xóa(1,2,3,4,5)");
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i].id == xoa) {
+                    arr.splice(i, 1);
+                }
+            }
+            for (let i = 0; i < arr.length; i++) {
+                for (const key in arr[i]) {
+                    document.write(arr[i][key]);
+                    document.write("<br><br>")
+                }
+            }
+        } else if (option == "E") {
+            while (true) {
+                alert("Rikkei Academy")
+            }
+        }
+        
+        
+ 
+
+       
+    
+
+    </script>
+</body>
+
+</html>
